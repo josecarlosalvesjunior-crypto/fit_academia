@@ -1,0 +1,721 @@
+/*1. VARIÁVEIS DE CORES E CONFIGURAÇÕES GERAIS (DIRETAMENTE DO FIGMA) */
+:root {
+    --bg-main: #000000;            /* Fundo geral escuro */
+    --bg-cards: #2d2d2d;           /* Fundo dos cards internos */
+    --bg-sidebar: #111111;         /* Fundo do menu lateral */
+    --orange-primary: #f25a22;     /* Laranja padrão FIT ACADEMIA */
+    --orange-hover: #d44816;       /* Laranja para efeitos de foco/hover */
+    --text-white: #ffffff;
+    --text-gray: #aaaaaa;
+    
+    --radius-lg: 20px;             /* Bordas arredondadas dos cards principais */
+    --radius-sm: 10px;             /* Bordas de inputs e pequenos elementos */
+    --transition-fast: 0.3s ease;
+}
+
+/* Reset básico de layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-white);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/*2. REGRAS AUXILIARES / CLASSES UTILITÁRIAS */
+.hidden { display: none !important; }
+.text-orange { color: var(--orange-primary); }
+.text-white { color: var(--text-white); }
+.text-gray { color: var(--text-gray); }
+.text-right { text-align: right; }
+.block { display: block; }
+.margin-top { margin-top: 20px; }
+.margin-top-sm { margin-top: 10px; }
+.font-small { font-size: 0.9rem; }
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Links genéricos */
+.link-orange {
+    color: var(--orange-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+.link-orange:hover {
+    color: var(--orange-hover);
+    text-decoration: underline;
+}
+
+/* 3. PADRONIZAÇÃO E DIMENSIONAMENTO DE IMAGENS LOCAIS (PASTA img/) */
+.main-logo-img {
+    max-width: 190px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+.menu-icon-img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.quick-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.card-media {
+    max-width: 55px;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.workout-img {
+    width: 75px;
+    height: 75px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+}
+
+.list-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+}
+
+.arrow-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.status-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.avatar-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--orange-primary);
+}
+
+.cam-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.modal-check-img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+/*4. TELA DE AUTENTICAÇÃO (LOGIN)*/
+.auth-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #151515;
+    background: linear-gradient(rgba(21, 21, 21, 0.25), rgba(21, 21, 21, 0.85)), 
+                url('img/Pexels\ Photo\ by\ Ivan\ S.png') no-repeat center center;
+    background-size: cover; /* Garante que a imagem preencha toda a tela sem distorcer */
+}
+
+.login-box {
+    background-color: var(--bg-cards);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.logo-area {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo-area h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+
+.logo-area h2 {
+    font-size: 1.1rem;
+    color: var(--orange-primary);
+    letter-spacing: 4px;
+    margin-top: 2px;
+}
+
+.input-group {
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    background-color: #383838;
+    border: 1px solid #444;
+    border-bottom: 3px solid var(--orange-primary);
+    border-radius: var(--radius-sm);
+    color: var(--text-white);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.input-group input:focus {
+    background-color: #404040;
+    border-color: #555;
+}
+
+/* 5. BOTÕES PADRONIZADOS */
+.btn-primary {
+    background-color: var(--orange-primary);
+    color: var(--text-white);
+    border: none;
+    padding: 14px 20px;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background var(--transition-fast);
+}
+
+.btn-primary:hover {
+    background-color: var(--orange-hover);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--text-white);
+    padding: 10px 18px;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 6. ESTRUTURA E LAYOUT DO APP (SIDEBAR + MAIN)*/
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.app-section h2 {
+    margin-top: 20px;     
+    margin-bottom: 10px;  
+    font-size: 1.8rem;   
+    font-weight: 700;
+}
+
+/* Sidebar Fixa Lateral */
+.sidebar {
+    width: 200px;
+    background-color: var(--bg-sidebar);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition-fast);
+    border-right: 1px solid #222;
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+    padding: 10px 0;
+}
+
+.menu-icon-img {
+    width: 100%;            
+    max-width: 100px;        
+    height: auto;           
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;          
+}
+
+.sidebar-logo p {
+    font-size: 0.75rem;
+    color: var(--orange-primary);
+    letter-spacing: 2px;
+}
+
+/* Itens de Menu */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-gray);
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    transition: var(--transition-fast);
+    transition: all var(--transition-fast);
+    position: relative;
+    left: 0;
+}
+
+.sidebar-menu a:hover, 
+.sidebar-menu a.active {
+    background-color: var(--bg-cards);
+    color: var(--orange-primary);
+    left: 6px;
+}
+
+.sidebar-menu a.active .nav-icon,
+.sidebar-menu a:hover .nav-icon {
+    filter: none; /* Mantém a cor original do ícone laranja ao selecionar */
+}
+
+/* Área de Conteúdo Principal */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    margin-left: 260px; /* Desloca o conteúdo para não ficar por baixo da sidebar */
+    min-height: 100vh;
+}
+
+/* Botão Hamburguer Hambúrguer para Mobile */
+.menu-toggle {
+    display: none; /* Oculto no desktop */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--orange-primary);
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    z-index: 110;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* 7. COMPONENTES INTERNOS DAS TELAS (CARDS, ABAS, LISTAS) */
+.welcome-header {
+    margin-bottom: 28px;
+}
+
+.welcome-header h2 { font-size: 1.8rem; }
+.welcome-header p { color: var(--text-gray); }
+
+.section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 30px 0 15px 0;
+}
+
+/* Cards Estilizados */
+.card {
+    background-color: var(--bg-cards);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-orange {
+    background: linear-gradient(135deg, var(--orange-primary), #db420b);
+}
+
+.card-dark {
+    background-color: var(--bg-cards);
+    border: 1px solid #3a3a3a;
+}
+
+.card-body h3 {
+    font-size: 1.3rem;
+    margin: 4px 0;
+}
+
+.card-body p.small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 18px;
+}
+
+/* Caixas de Acesso Rápido */
+.quick-box {
+    background-color: var(--bg-cards);
+    border: 1px solid #333;
+    padding: 20px 10px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.quick-box:hover {
+    background-color: #363636;
+    border-color: var(--orange-primary);
+    transform: translateY(-2px);
+}
+
+/* Componentes de Lista (Treinos e Submenus) */
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.list-item {
+    background-color: var(--bg-cards);
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #333;
+}
+
+.item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-info {
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.card-dark .card-body {
+    flex-grow: 1;
+    margin-left: 18px; 
+}
+
+.item-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.item-info p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+/* Filtros por Abas */
+.tab-filters {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.tab {
+    cursor: pointer;
+    color: var(--text-gray);
+    padding: 6px 12px;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.tab.active, .tab:hover {
+    color: var(--orange-primary);
+    font-weight: 700;
+}
+
+.tab.active {
+    border-bottom: 3px solid var(--orange-primary);
+}
+
+/* Barra de Pesquisa */
+.search-bar {
+    width: 100%;
+    padding: 14px;
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    color: var(--text-white);
+    border-radius: var(--radius-sm);
+    margin-bottom: 25px;
+    outline: none;
+}
+.search-bar:focus { border-color: var(--orange-primary); }
+
+/* Progress Bars (Metas) */
+.goals-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.goal-card {
+    background-color: var(--bg-cards);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #333;
+}
+
+.goal-info h3 { font-size: 1.15rem; margin-bottom: 4px; }
+.goal-info p { font-size: 0.9rem; color: var(--text-gray); }
+
+.progress-bar-container {
+    background-color: #444;
+    border-radius: 10px;
+    height: 18px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--orange-primary);
+    height: 100%;
+    text-align: right;
+    padding-right: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+/* Timeline (Avaliações) */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.eval-card {
+    background-color: var(--bg-cards);
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: var(--radius-sm);
+}
+
+.eval-date {
+    font-weight: bold;
+    color: var(--orange-primary);
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+/* Agenda / Calendário de Listras */
+.calendar-days-strip {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0 25px 0;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.day-opt {
+    background-color: var(--bg-cards);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    min-width: 65px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.day-opt.active {
+    background-color: var(--orange-primary);
+    font-weight: bold;
+}
+
+.schedule-list {
+    margin-bottom: 20px;
+}
+
+.schedule-item {
+    background-color: var(--bg-cards);
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #555;
+}
+
+.schedule-item.item-active {
+    border-left-color: var(--orange-primary);
+}
+
+.schedule-item h4 { font-size: 1.1rem; margin-bottom: 2px; }
+.schedule-item p { font-size: 0.85rem; color: var(--text-gray); }
+
+/* Perfil centralizado */
+.profile-center {
+    text-align: center;
+    margin: 20px 0 35px 0;
+}
+
+.profile-avatar {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.camera-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background-color: var(--orange-primary);
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid var(--bg-main);
+}
+
+.profile-center h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+}
+
+/* ==========================================================================
+   8. MODAL DE CONFIRMAÇÃO (CHECK-IN)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: var(--bg-cards);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    max-width: 340px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.success-icon {
+    margin-bottom: 20px;
+}
+
+.modal-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.modal-content p {
+    color: var(--text-gray);
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   9. BREAKPOINTS DE RESPONSIVIDADE (MOBILE & TABLET)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Recolhe a barra lateral para fora da tela */
+    .sidebar {
+        left: -100%;
+    }
+    
+    /* Quando o JS injetar a classe .open, a barra desliza para dentro */
+    .sidebar.open {
+        left: 0;
+    }
+    
+    /* Conteúdo expande para ocupar 100% da largura em telas pequenas */
+    .main-content {
+        margin-left: 0;
+        padding: 85px 20px 25px 20px;
+    }
+    
+    /* Mostra o botão hambúrguer fixo no canto superior */
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Converte grids horizontais de 3 colunas em blocos verticais de 1 coluna */
+    .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    /* Pequenos ajustes em espaçamentos de cards */
+    .card {
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .card-icon {
+        align-self: flex-end;
+    }
+}

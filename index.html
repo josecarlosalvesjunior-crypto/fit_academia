@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Academia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA DE LOGIN (Aparece primeiro) -->
+    <div id="login-screen" class="auth-container">
+        <div class="login-box">
+            <div class="logo-area">
+                <!-- Coloque sua logo principal aqui -->
+                <img src="img/logo_fitacademia.png" alt="[Logo FIT ACADEMIA]" class="main-logo-img">
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Usuário:</label>
+                    <input type="email" value="teste123@gmail.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Senha:</label>
+                    <input type="password" value="12345678" required>
+                </div>
+                <button type="submit" class="btn-primary">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ESTRUTURA PRINCIPAL DO APP (Escondida antes do login) -->
+    <div id="app-container" class="app-layout hidden">
+        
+        <!-- Menu Lateral / Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <!-- Ícone ou logo reduzida para o topo do menu -->
+                <img src="img/logo_reduzida.svg" alt="[Ícone Mini-Logo Aqui]" class="menu-icon-img">
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active" data-target="dashboard">
+                    <img src="img/Home.svg" alt="[Ícone Início]" class="nav-icon"> Início
+                </a>
+                <a href="#" class="menu-item" data-target="treinos">
+                    <img src="img/halter.svg" alt="[Ícone Treinos]" class="nav-icon"> Treinos
+                </a>
+                <a href="#" class="menu-item" data-target="agenda">
+                    <img src="img/Calendar.svg" alt="[Ícone Agenda]" class="nav-icon"> Agenda
+                </a>
+                <a href="#" class="menu-item" data-target="avaliacoes">
+                    <img src="img/star_filled.png" alt="[Ícone Avaliações]" class="nav-icon"> Avaliações
+                </a>
+                <a href="#" class="menu-item" data-target="planos">
+                    <img src="img/Award.svg" alt="[Ícone Planos]" class="nav-icon"> Planos
+                </a>
+                <a href="#" class="menu-item" data-target="metas">
+                    <img src="img/Target.svg" alt="[Ícone Metas]" class="nav-icon"> Metas
+                </a>
+                <a href="#" class="menu-item" data-target="pagamentos">
+                    <img src="img/Credit card.svg" alt="[Ícone Pagamentos]" class="nav-icon"> Pagamentos
+                </a>
+                <a href="#" class="menu-item" data-target="perfil">
+                    <img src="img/Generic avatar.svg" alt="[Ícone Perfil]" class="nav-icon"> Perfil
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Botão Hambúrguer para Mobile -->
+        <button class="menu-toggle" id="menuToggle">
+            <img src="img/menu_hamburguer.svg" alt="[Menu]" class="nav-icon">
+        </button>
+
+        <!-- Conteúdo Principal Dinâmico -->
+        <main class="main-content">
+            
+            <!-- TELA: DASHBOARD -->
+            <section id="dashboard" class="app-section">
+                <div class="welcome-header">
+                    <h2>Olá, Teste!</h2>
+                    <p>Vamos treinar hoje?</p>
+                </div>
+
+                <!-- Card de Plano -->
+                <div class="card card-orange">
+                    <div class="card-body">
+                        <p>Plano atual:</p>
+                        <h3>Musculação premium</h3>
+                        <p class="small">Válido até 30/06/2026</p>
+                        <button class="btn-outline text-white navigate-btn" data-target="planos">Ver meu plano</button>
+                    </div>
+                    <div class="card-icon">
+                        <!-- Imagem do selo/medalha do plano -->
+                        <img src="img/Award.svg" alt="[Selo do Plano Aqui]" class="card-media">
+                    </div>
+                </div>
+
+                <!-- Próximo Treino -->
+                <div class="section-title">Próximo treino</div>
+                <div class="card card-dark flex-row">
+                    <div class="workout-graphics">
+                        <!-- Imagem do mapa de músculos ativos (Peito/Tríceps) -->
+                        <img src="img/peito_triceps.png" alt="[Gráfico de Músculos Peito/Tríceps Aqui]" class="workout-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Peito e Tríceps</h3>
+                        <p class="text-gray">Hoje às 18:00</p>
+                    </div>
+                    <a href="#" class="link-orange navigate-btn" data-target="treinos">Ver detalhes</a>
+                </div>
+
+                <!-- Acesso Rápido -->
+                <div class="section-title">Acesso rápido</div>
+                <div class="grid-3">
+                    <div class="quick-box navigate-btn" data-target="agenda">
+                        <img src="img/Calendar.svg" alt="[Ícone Agenda]" class="quick-icon">
+                        <span>Agenda</span>
+                    </div>
+                    <div class="quick-box navigate-btn" data-target="metas">
+                        <img src="img/Target.svg" alt="[Ícone Metas]" class="quick-icon">
+                        <span>Metas</span>
+                    </div>
+                    <div class="quick-box navigate-btn" data-target="pagamentos">
+                        <img src="img/Credit card.svg" alt="[Ícone Pagamento]" class="quick-icon">
+                        <span>Pagamento</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TELA: TREINOS -->
+            <section id="treinos" class="app-section hidden">
+                <h2>Treinos</h2>
+                <div class="tab-filters">
+                    <span class="tab active">Todos</span>
+                    <span class="tab">A-Z</span>
+                    <span class="tab">Meus treinos</span>
+                </div>
+                <input type="text" class="search-bar" placeholder="Buscar treinos...">
+                
+                <div class="list-container">
+                    <div class="list-item">
+                        <div class="item-icon"><img src="img/peito.png" alt="[Foto Peito]" class="list-thumb"></div>
+                        <div class="item-info"><h3>Peito</h3><p>8 treinos</p></div>
+                        <img src="img/seta_direita.svg" alt="[>]" class="arrow-icon">
+                    </div>
+                    <div class="list-item">
+                        <div class="item-icon"><img src="img/ombro.png" alt="[Foto Ombro]" class="list-thumb"></div>
+                        <div class="item-info"><h3>Ombro</h3><p>6 treinos</p></div>
+                        <img src="img/seta_direita.svg" alt="[>]" class="arrow-icon">
+                    </div>
+                    <div class="list-item">
+                        <div class="item-icon"><img src="img/triceps.png" alt="[Foto Tríceps]" class="list-thumb"></div>
+                        <div class="item-info"><h3>Tríceps</h3><p>6 treinos</p></div>
+                        <img src="img/seta_direita.svg" alt="[>]" class="arrow-icon">
+                    </div>
+                    <div class="list-item">
+                        <div class="item-icon"><img src="img/perna.svg" alt="[Foto Perna]" class="list-thumb"></div>
+                        <div class="item-info"><h3>Perna</h3><p>10 treinos</p></div>
+                        <img src="img/seta_direita.svg" alt="[>]" class="arrow-icon">
+                    </div>
+                </div>
+            </section>
+
+            <!-- TELA: METAS -->
+            <section id="metas" class="app-section hidden">
+                <h2>Metas</h2>
+                <div class="goals-container">
+                    <div class="goal-card">
+                        <div class="goal-info">
+                            <h3>Perder peso</h3>
+                            <p>8,0 / 10,0 Kg (Meta: 70 Kg)</p>
+                            <p class="small">Prazo: 30/06/2026</p>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 80%;">80%</div>
+                        </div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-info">
+                            <h3>Ganho de massa</h3>
+                            <p>2,5 / 5,0 Kg (Meta: 70 Kg)</p>
+                            <p class="small">Prazo: 30/06/2026</p>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 50%;">50%</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary margin-top">Adicionar nova meta</button>
+                </div>
+            </section>
+
+            <!-- TELA: AVALIAÇÕES -->
+            <section id="avaliacoes" class="app-section hidden">
+                <h2>Avaliações</h2>
+                <div class="timeline">
+                    <div class="eval-card">
+                        <div class="eval-date">03/06/2026</div>
+                        <div class="grid-3 font-small">
+                            <div><strong>Peso:</strong> 75,3 Kg</div>
+                            <div><strong>Gordura:</strong> 15,8%</div>
+                            <div><strong>Massa Magra:</strong> 55,7 Kg</div>
+                        </div>
+                        <a href="#" class="link-orange block text-right margin-top-sm">Ver detalhes</a>
+                    </div>
+                </div>
+                <button class="btn-primary margin-top">Agendar nova avaliação</button>
+            </section>
+
+            <!-- TELA: AGENDA -->
+            <section id="agenda" class="app-section hidden">
+                <h2>Agenda</h2>
+                <div class="calendar-preview">
+                    <p><strong>Junho 2026</strong></p>
+                    <div class="calendar-days-strip">
+                        <span class="day-opt">Mo 8</span>
+                        <span class="day-opt">Tu 9</span>
+                        <span class="day-opt active">We 10</span>
+                        <span class="day-opt">Th 11</span>
+                        <span class="day-opt">Fr 12</span>
+                    </div>
+                </div>
+                <div class="schedule-list">
+                    <div class="schedule-item item-active">
+                        <div>
+                            <h4>Peito e Tríceps</h4>
+                            <p>18:00 horas</p>
+                        </div>
+                        <a href="#" class="link-orange block text-right margin-top-sm">Disponível</a>
+                    </div>
+                </div>
+                <button id="btnCheckin" class="btn-primary margin-top">Agendar / Fazer Check-in</button>
+            </section>
+
+            <!-- TELA: PAGAMENTOS -->
+            <section id="pagamentos" class="app-section hidden">
+                <h2>Pagamento</h2>
+                <div class="card card-dark">
+                    <p>Próxima cobrança: 30/06/2026</p>
+                    <h3>R$ 129,90</h3>
+                    <p class="text-orange">Musculação premium</p>
+                </div>
+                <button class="btn-primary margin-top">Alterar forma de pagamento</button>
+            </section>
+
+            <!-- TELA: PLANOS -->
+            <section id="planos" class="app-section hidden">
+                <h2>Meu Plano</h2>
+                <div class="card card-orange">
+                    <h3>Musculação Premium</h3>
+                    <p>Válido até 30/06/2026</p>
+                </div>
+                <button class="btn-primary margin-top">Alterar Plano</button>
+            </section>
+
+            <!-- TELA: PERFIL -->
+            <section id="perfil" class="app-section hidden">
+                <h2>Perfil</h2>
+                <div class="profile-center">
+                    <div class="profile-avatar">
+                        <img src="img/Pexels Photo by Marlon Schmeiski.jpg" alt="[Foto do Usuário Aqui]" class="avatar-img">
+                        <div class="camera-badge">
+                            <img src="img/Camera.svg" alt="[Mudar]" class="cam-icon">
+                        </div>
+                    </div>
+                    <h3>Teste</h3>
+                    <p class="text-gray">teste123@gmail.com</p>
+                </div>
+                <div class="list-container margin-top">
+                    <div class="list-item"><div class="item-info"><h4>Meus dados</h4></div><img src="img/Generic avatar.svg" alt="[>]" class="arrow-icon"></div>
+                    <div class="list-item"><div class="item-info"><h4>Preferências</h4></div><img src="img/Settings.svg" alt="[>]" class="arrow-icon"></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL DE CHECK-IN BEM-SUCEDIDO -->
+    <div id="success-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="success-icon">
+        
+                <img src="img/check.svg" alt="[Sucesso]" class="modal-check-img">
+            </div>
+            <h3>Check-in realizado com sucesso!</h3>
+            <p>Fit Academia</p>
+            <button id="closeModal" class="btn-primary">Fechar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
